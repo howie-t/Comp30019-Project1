@@ -1,0 +1,31 @@
+Initialize engine version: 5.3.6f1 (29055738eb78)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 515 (ID=0x191e)
+    Vendor:   Intel
+    VRAM:     1132 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.134 seconds
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Comp30019\Desktop\终极版\terrain_Data\Managed\System.dll (this message is harmless)
+desktop: 2736x1824 60Hz; virtual: 2736x1824 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'Main Camera') is missing!
+ 
+(Filename:  Line: 1655)
+
+UnloadTime: 1.015196 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2ec4 -> priority: 1 
