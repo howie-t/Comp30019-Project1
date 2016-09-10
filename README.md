@@ -1,6 +1,7 @@
 #COMP30019 - Project1
 
 Description:
+
 This project uses diamond-square algorithm to generate a random landscape.
 We use a grid with size 65x65 points, to store the heights at different point.
 Firstly, we initialize the grid with different random values at the four corners.
@@ -28,6 +29,7 @@ first to be able to keep moving. It won't get stuck but it will be hard to get o
 it is in a narrow gap.
 
 Run:
+
 There are many preset parameters in the code; for example, maxHeight, minHeight and
 noise. They should not be changed because we have chosen the values that makes our
 landscape look more realistic. Since the terrain is generated randomly, so there is no
