@@ -42,7 +42,6 @@ public class Water : MonoBehaviour {
             new Vector3(0.0f,0.0f,0.0f),
             new Vector3(0.0f,0.0f,size-1),
             new Vector3(size-1,0.0f,0.0f),
-
             new Vector3(size-1,0.0f,0.0f),
             new Vector3(0.0f,0.0f,size-1),
             new Vector3(size-1,0.0f,size-1)
@@ -54,7 +53,6 @@ public class Water : MonoBehaviour {
             transparentBlue,
             transparentBlue,
             transparentBlue,
-
             transparentBlue,
             transparentBlue,
             transparentBlue
@@ -67,16 +65,14 @@ public class Water : MonoBehaviour {
         m.triangles = triangles;
 
         // Surface Normal and Vertex Normal is the same for the water surface
-        Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
         m.normals = new[]
         {
-            normal,
-            normal,
-            normal,
-
-            normal,
-            normal,
-            normal
+            Vector3.up,
+            Vector3.up,
+            Vector3.up,
+            Vector3.up,
+            Vector3.up,
+            Vector3.up
         };
         return m;
     }
