@@ -12,6 +12,7 @@ also used to make an array of normals after we calculated the vertex normal at
 each vertex.
 
 Some Implementation Choices:
+
 1. For the colours of the landscape, we decide to make it change at a particular
 height: if it is higher than 20, it will has a white colour which represents snow;
 if it is between 7.5 and 20, it will has a brown colour which represents soil;
