@@ -1,4 +1,7 @@
-﻿// This shader is using Phong illumination model and Phone shading
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+// This shader is using Phong illumination model and Phone shading
 // It is from the Lab5 code with a little modification including:
 // add Blending from ShaderLab so that the water can be semi-transparent
 // adjust Ks value since Terrain is not a glossy object in general.
@@ -46,8 +49,8 @@ Shader "Custom/PhongShader"
 			vertOut o;
 
 			// Convert Vertex position and corresponding normal into world coords
-			float4 worldVertex = mul(_Object2World, v.vertex);
-			float3 worldNormal = normalize(mul(transpose((float3x3)_World2Object), v.normal.xyz));
+			float4 worldVertex = mul(unity_ObjectToWorld, v.vertex);
+			float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));
 
 			// Transform vertex in world coordinates to camera coordinates, and pass colour
 			o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);

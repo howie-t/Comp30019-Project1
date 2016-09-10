@@ -8,6 +8,7 @@ public class Water : MonoBehaviour {
 
     public int size;
     private Color transparentBlue = new Color(0.529f, 0.807f, 0.922f, 0.5f);
+
     // Use this for initialization
     void Start()
     {
@@ -30,6 +31,7 @@ public class Water : MonoBehaviour {
         renderer.material.SetVector("_PointLightPosition", sun.GetWorldPosition());
     }
 
+    // Method to create the semi-transparent water surface
     Mesh CreateWaterMesh()
     {
         Mesh m = new Mesh();
@@ -64,6 +66,7 @@ public class Water : MonoBehaviour {
 
         m.triangles = triangles;
 
+        // Surface Normal and Vertex Normal is the same for the water surface
         Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
         m.normals = new[]
         {

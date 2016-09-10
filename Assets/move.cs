@@ -3,10 +3,10 @@ using System.Collections;
 
 public class move : MonoBehaviour {
 
-    public float speed;
-    public float spinSpeed;
+    public float speed = 5;
+    public float spinSpeed = 10;
     
-    public int mid_point = 17;
+    public int mid_point = 33;
     public Landscape landscape;
     float mouseUpDown;
     float nextW;
@@ -22,13 +22,7 @@ public class move : MonoBehaviour {
     void start() { 
         speed = 13;
         spinSpeed = 10;
-       
-        
         this.landscape = landscape.gameObject.GetComponent<Landscape>();
-        
-       
-
-       
     }
 
     // Update is called once per frame
@@ -40,8 +34,6 @@ public class move : MonoBehaviour {
         mouseLeftRight = Input.mousePosition.x;
         mouseUpDown = Input.mousePosition.y;
         
-    
-
         //rolling the camera 
         if (Input.GetKey(KeyCode.Q)){
 			

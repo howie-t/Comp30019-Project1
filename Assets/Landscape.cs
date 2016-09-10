@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// This is the code using Diamond-Square algorithm to generate a random
+// landscape.
+using UnityEngine;
 using System.Collections;
 
 
@@ -7,11 +9,14 @@ public class Landscape : MonoBehaviour
     public Shader shader;
     public PointLight sun;
 
-    public int gridSize = 65;
+    // Although these parameters are set public, they should not be changed
+    // in Unity since different noise, size and heights will generate a very
+    // different landscape that is not very realistic
+    public int gridSize = 65; 
     public float maxHeight = 25;
     public float minHeight = -15;
     public float initialNoise = 15;
-    private static Color brown = new Color(0.501f, 0.4f, 0.255f);
+
     private static Color darkGreen = new Color(0.173f, 0.690f, 0.216f);
     private static Color sand = new Color(0.761f, 0.698f, 0.502f);
     private static Color lightBrown = new Color(0.804f, 0.522f, 0.247f);
@@ -36,7 +41,7 @@ public class Landscape : MonoBehaviour
         renderer.material.SetVector("_PointLightPosition", sun.GetWorldPosition());
     }
 
-    // Method to create a cube mesh with coloured vertices
+    // Method to create a random landscape
     Mesh CreateLandscapeMesh()
     {
         Mesh m = new Mesh();
@@ -46,6 +51,7 @@ public class Landscape : MonoBehaviour
         float[,] grid = initializeGrid();
         diamondSquare(grid, gridSize, initialNoise);
 
+        // Add x and z components and let the height be the y component
         Vector3[,] points = new Vector3[gridSize, gridSize];
         for (int i = 0; i < gridSize; i++)
         {
@@ -55,6 +61,7 @@ public class Landscape : MonoBehaviour
             }
         }
 
+        // Calculate surface normal based on the position of the vertices
         Vector3[,] surfaceNormals = new Vector3[2 * (gridSize - 1), (gridSize - 1)];
         for (int i = 0; i < gridSize - 1; i++)
         {
@@ -65,6 +72,8 @@ public class Landscape : MonoBehaviour
             }
         }
 
+        // Calculate vertex normal of each vertex based on the surfaces around
+        // the vertex
         Vector3[,] vertexNormals = new Vector3[gridSize, gridSize];
         for (int i = 0; i < gridSize - 1; i++)
         {
@@ -87,9 +96,10 @@ public class Landscape : MonoBehaviour
             }
         }
 
+        // map the vertices in the grid based on Unity convention
         m.vertices = mapGridToArray(points, gridSize);
 
-        // Define the vertex colours
+        // Define the vertex colours based on the height
         Color[] colors = new Color[m.vertices.Length];
         for (int i = 0; i < m.vertices.Length; i++)
         {
@@ -115,10 +125,13 @@ public class Landscape : MonoBehaviour
 
         m.triangles = triangles;
 
+        // map the vertex normals in the grid based on Unity convention
         m.normals = mapGridToArray(vertexNormals, gridSize);
         return m;
     }
 
+    // This method generate a (gridSize x gridSize) grid and the values at
+    // the four corners will be randomly set between minHeight and maxHeight
     float[,] initializeGrid()
     {
         grid = new float[gridSize, gridSize];
@@ -130,6 +143,8 @@ public class Landscape : MonoBehaviour
         return grid;
     }
 
+    // This method implement the core part of Diamond-Square algorithm to
+    // generate a grid with random values
     void diamondSquare(float[,] grid, int size, float noise)
     {
         int preSize = size;
@@ -155,6 +170,9 @@ public class Landscape : MonoBehaviour
             noise = noise * squareSize / preSize;
         }
     }
+
+    // This is the diamond step which gives the average value at the middle
+    // based on the values at the four corners
     void diamondStep(float[,] grid, int row, int col, int size, float noise)
     {
         int midPointRow = row + (size - 1) / 2;
@@ -164,10 +182,13 @@ public class Landscape : MonoBehaviour
         return;
     }
 
+    // This is the square step which gives average values at the middle points
+    // of each edge based on other values we have already
     void squareStep(float[,] grid, int row, int col, int size, float noise)
     {
         int midPointRow = row + (size - 1) / 2;
         int midPointCol = col + (size - 1) / 2;
+
         //Left Middle Point
         if (col == 0)
         {
@@ -218,6 +239,8 @@ public class Landscape : MonoBehaviour
         return (x1 + x2 + x3) / 3 + Random.Range(-noise, noise);
     }
 
+    // This is the method that can map our grid to Unity convention of
+    // mesh construction.
     Vector3[] mapGridToArray(Vector3[,] grid, int size)
     {
         Vector3[] array = new Vector3[3 * 2 * size * size];
@@ -237,6 +260,7 @@ public class Landscape : MonoBehaviour
         }
         return array;
     }
+
 	public float get_height(float x, float z)
 	{
 		float height;
